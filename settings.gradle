@@ -1,0 +1,11 @@
+rootProject.name = 'wbone'
+include 'wbone-cas'
+include 'wbone-sys'
+include 'wbone-sm'
+include 'wbone-cas:wbone-cas-server'
+findProject(':wbone-cas:wbone-cas-server')?.name = 'wbone-cas-server'
+include 'wbone-cas:wbone-cas-client'
+findProject(':wbone-cas:wbone-cas-client')?.name = 'wbone-cas-client'
+include 'wbone-cas:wbone-cas-manager'
+findProject(':wbone-cas:wbone-cas-manager')?.name = 'wbone-cas-manager'
+

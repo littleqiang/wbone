@@ -1,0 +1,21 @@
+//apply from: "https://dl.bintray.com/scalding/generic/waroverlay.gradle"
+apply from: "file:/Users/wangxuqiang/Downloads/waroverlay.gradle"
+
+repositories {
+    mavenLocal()
+    jcenter()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'https://build.shibboleth.net/nexus/content/repositories/releases/' }
+}
+
+war {
+    baseName 'cas'
+    includeWarJars = true
+//    entryCompression = ZipEntryCompression.STORED
+}
+
+dependencies {
+    compile ("org.apereo.cas:cas-server-webapp-tomcat:${project.'cas.version'}@war")
+    compile("org.springframework.boot:spring-boot-starter-web")
+}

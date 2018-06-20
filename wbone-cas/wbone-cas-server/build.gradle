@@ -1,12 +1,27 @@
 //apply from: "https://dl.bintray.com/scalding/generic/waroverlay.gradle"
+apply plugin: 'org.springframework.boot'
 apply from: "file:/Users/wangxuqiang/Downloads/waroverlay.gradle"
-
+apply from: "file:/Users/wangxuqiang/Downloads/overrides.gradle"
 repositories {
     mavenLocal()
     jcenter()
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/'}
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url 'https://build.shibboleth.net/nexus/content/repositories/releases/' }
+}
+
+springBoot {
+    mainClass = "org.springframework.boot.loader.WarLauncher"
+}
+bootRepackage {
+    mainClass = "org.apereo.cas.web.CasWebApplication"
+    executable = false
+    excludeDevtools = false
+}
+
+bootRun {
+    addResources = true
+    classpath = sourceSets.main.compileClasspath
 }
 
 war {
@@ -17,5 +32,5 @@ war {
 
 dependencies {
     compile ("org.apereo.cas:cas-server-webapp-tomcat:${project.'cas.version'}@war")
-    compile("org.springframework.boot:spring-boot-starter-web")
+//    compile("org.springframework.boot:spring-boot-starter-web")
 }

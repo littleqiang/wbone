@@ -32,5 +32,10 @@ war {
 
 dependencies {
     compile ("org.apereo.cas:cas-server-webapp-tomcat:${project.'cas.version'}@war")
-//    compile("org.springframework.boot:spring-boot-starter-web")
+    compile ("mysql:mysql-connector-java:${project.'mysql.version'}")
+//    compile ("org.apereo.cas:cas-server-support-jdbc-drivers:${project.'cas.version'}")
+    compile ("org.apereo.cas:cas-server-support-jdbc:${project.'cas.version'}")
+//    compile ("com.alibaba:druid")
+
 }
+
